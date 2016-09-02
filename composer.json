@@ -1,7 +1,7 @@
 {
     "name": "agoat/autoprefixer-bundle",
     "type": "contao-bundle",
-    "description": "Contao autoprefixer library",
+    "description": "Contao autoprefixer extension",
     "license": "LGPL-3.0+",
     "authors": [
         {
@@ -33,7 +33,7 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Agoat\\AutoprefixerBundle\\Test\\": "tests/"
+            "Agoat\\AutoPrefixerBundle\\Test\\": "tests/"
         }
     }
 }
