@@ -19,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Agoat\\AutoprefixerBundle\\": "src/"
+            "Agoat\\AutoPrefixerBundle\\": "src/"
         },
         "classmap": [
             "src/Resources/contao"
