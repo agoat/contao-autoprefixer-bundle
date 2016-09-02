@@ -7,5 +7,5 @@ ___
 
 Add to app/AppKernel.php (after ContaoCoreBundle)
 ```
-new Agoat\AutoprefixerBundle\AgoatAutoprefixerBundle(),
+new Agoat\AutoPrefixerBundle\AgoatAutoPrefixerBundle(),
 ```
