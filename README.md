@@ -1,5 +1,5 @@
-# Contao 4 Extension-bundle
-autoprefixer library for contao 4
+# Contao Autoprefixer extension
+Contao 4 bundle
 
 ___
 
