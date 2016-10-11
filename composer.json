@@ -17,6 +17,9 @@
     "require-dev": {
         "phpunit/phpunit": "~4.5"
     },
+    "replace": {
+        "contao-legacy/autoprefixer": "*"
+    },
     "autoload": {
         "psr-4": {
             "Agoat\\AutoPrefixerBundle\\": "src/"
