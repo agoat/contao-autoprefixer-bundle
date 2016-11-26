@@ -13,7 +13,7 @@
  
 
 // palettes
-$GLOBALS['TL_DCA']['tl_layout']['palettes']['default'] = str_replace('loadingOrder', 'loadingOrder,autoprefix', $GLOBALS['TL_DCA']['tl_layout']['palettes']['default']);
+$GLOBALS['TL_DCA']['tl_layout']['palettes']['default'] = str_replace('combineScripts', 'combineScripts,autoprefix', $GLOBALS['TL_DCA']['tl_layout']['palettes']['default']);
 $GLOBALS['TL_DCA']['tl_layout']['palettes']['__selector__'][] = 'autoprefix';
 $GLOBALS['TL_DCA']['tl_layout']['subpalettes']['autoprefix'] = 'browsers';
 

@@ -42,7 +42,8 @@ class Controller extends Controller
 			return $strBuffer;
 		}
 		
-		$objLayout = $GLOBALS['objPage']->getRelated('layout');
+		$objLayout = \LayoutModel::findByPk($GLOBALS['objPage']->layoutId);
+		$blnCombineScripts = ($objLayout === null) ? false : $objLayout->combineScripts;
 
 		// Autoprefix in this layout activated??
 		if (!$objLayout->autoprefix)
@@ -62,19 +63,21 @@ class Controller extends Controller
 				$objCombiner->add($stylesheet);
 			}
 		}
-		
+
 		// Add the internal style sheets
 		if (!empty($GLOBALS['TL_CSS']) && is_array($GLOBALS['TL_CSS']))
 		{
 			foreach (array_unique($GLOBALS['TL_CSS']) as $stylesheet)
 			{
 				$options = \StringUtil::resolveFlaggedUrl($stylesheet);
+
 				if ($options->static)
 				{
 					if ($options->mtime === null)
 					{
 						$options->mtime = filemtime(TL_ROOT . '/' . $stylesheet);
 					}
+
 					$objCombiner->add($stylesheet, $options->mtime, $options->media);
 				}
 				else
@@ -83,19 +86,16 @@ class Controller extends Controller
 				}
 			}
 		}
-		
+
 		// Add the user style sheets
 		if (!empty($GLOBALS['TL_USER_CSS']) && is_array($GLOBALS['TL_USER_CSS']))
 		{
 			foreach (array_unique($GLOBALS['TL_USER_CSS']) as $stylesheet)
 			{
 				$options = \StringUtil::resolveFlaggedUrl($stylesheet);
+
 				if ($options->static)
 				{
-					if ($options->mtime === null)
-					{
-						$options->mtime = filemtime(TL_ROOT . '/' . $stylesheet);
-					}
 					$objCombiner->add($stylesheet, $options->mtime, $options->media);
 				}
 				else
@@ -104,12 +104,23 @@ class Controller extends Controller
 				}
 			}
 		}
-		
+
 		// Create the aggregated style sheet
 		if ($objCombiner->hasEntries())
 		{
-			$strScripts.= Template::generateStyleTag($objCombiner->getCombinedFile(), 'all') . "\n";
+			if ($blnCombineScripts)
+			{
+				$strScripts .= Template::generateStyleTag($objCombiner->getCombinedFile(), 'all') . "\n";
+			}
+			else
+			{
+				foreach ($objCombiner->getFileUrls() as $strUrl)
+				{
+					$strScripts .= Template::generateStyleTag($strUrl, 'all') . "\n";
+				}
+			}
 		}
+
 		
 		// save to a global
 		$GLOBALS['TL_TEMPLATE_CSS'] = $strScripts;
