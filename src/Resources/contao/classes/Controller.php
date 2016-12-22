@@ -13,12 +13,11 @@
 
 namespace Agoat\AutoPrefixer;
 
-use Contao\Controller;
 use Contao\Template;
 use Agoat\AutoPrefixer\AutoCombiner;
 
 
-class Controller extends Controller
+class Controller extends \Contao\Controller
 {
 
 	/**
