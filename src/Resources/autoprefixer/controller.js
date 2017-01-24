@@ -1,4 +1,4 @@
-var autoprefixer = require('./../vendor/ai/autoprefixer-rails/autoprefixer.js');
+var autoprefixer = require('autoprefixer.js');
 var data = '';
 
 process.stdin.on('data', function(chunk) {
