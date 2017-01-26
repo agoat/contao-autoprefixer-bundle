@@ -31,11 +31,11 @@ class AutoPrefixer
     {
 		// open wrapper to autoprefixer.js in node.js
         $nodejs = proc_open
-		(
+	(
 			'node ' . \System::getContainer()->getParameter('kernel.root_dir') . '/../vendor/agoat/autoprefixer-bundle/src/Resources/autoprefixer/controller.js',
-            array(array('pipe', 'r'), array('pipe', 'w')),
-            $pipes
-        );
+			array(array('pipe', 'r'), array('pipe', 'w')),
+			$pipes
+	);
 
         if ($nodejs === false) 
 		{
