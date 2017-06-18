@@ -11,8 +11,8 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "symfony/framework-bundle": "~2.8|~3.0",
-        "contao/core-bundle": "^4.2"
+        "symfony/framework-bundle": "^3.3",
+        "contao/core-bundle": "^4.4"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.5"
