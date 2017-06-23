@@ -18,8 +18,7 @@
         "phpunit/phpunit": "~4.5"
     },
     "replace": {
-        "contao-legacy/autoprefixer": "*",
-        "agoat/autoprefixer-bundle": "*"
+        "contao-legacy/autoprefixer": "*"
     },
     "autoload": {
         "psr-4": {
