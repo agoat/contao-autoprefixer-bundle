@@ -32,7 +32,7 @@ class AutoPrefixer
         // open wrapper to autoprefixer.js in node.js
         $nodejs = proc_open
         (
-            'node ' . \System::getContainer()->getParameter('kernel.project_dir') . '/vendor/agoat/autoprefixer-bundle/src/Resources/autoprefixer/controller.js',
+            'node ' . \System::getContainer()->getParameter('kernel.project_dir') . '/vendor/agoat/contao-autoprefixer/src/Resources/autoprefixer/controller.js',
             array(array('pipe', 'r'), array('pipe', 'w')),
             $pipes
         );
