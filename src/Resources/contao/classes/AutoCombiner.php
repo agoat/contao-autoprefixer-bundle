@@ -8,7 +8,7 @@
  * @package  	 AutoPrefixer
  * @author   	 Arne Stappen
  * @license  	 LGPL-3.0+ 
- * @copyright	 Arne Stappen 2016
+ * @copyright	 Arne Stappen 2017
  */
 
 namespace Agoat\AutoPrefixer;
@@ -36,14 +36,11 @@ class AutoCombiner extends Combiner
 
 	protected $autoprefixer = null;
 	
+
 	/**
-	 * Generate the combined file, add vendor prefixes with autoprefixer and return its path
-	 *
-	 * @param string $strUrl An optional URL to prepend
-	 *
-	 * @return string The path to the combined file
+	 * Public constructor required
 	 */
-	public function getCombinedFile($strUrl=null)
+	public function __construct()
 	{
 		// Prepare autoprefixer
 		if ($GLOBALS['objPage'])
@@ -56,35 +53,11 @@ class AutoCombiner extends Combiner
 
 			$this->autoprefixer = new AutoPrefixer($browsers);
 		}
-
-		if (\Config::get('debugMode'))
-		{
-			return $this->getDebugMarkup();
-		}
-
-		return $this->getCombinedFileUrl($strUrl);
+		
+		parent::__construct();
 	}
 
-
-	/**
-	 * Generates the debug markup.
-	 *
-	 * @return string The debug markup
-	 */
-	protected function getDebugMarkup()
-	{
-		$return = $this->getFileUrls();
-
-		if ($this->strMode == self::JS)
-		{
-			return implode('"></script><script src="', $return);
-		}
-		else
-		{
-			return implode('"><link rel="stylesheet" href="', $return);
-		}
-	}
-
+	
 	/**
 	 * Generates the files, add vendor prefixes and returns the URLs.
 	 *
@@ -158,6 +131,46 @@ class AutoCombiner extends Combiner
 		return $return;
 	}
 
+	
+	/**
+	 * Generate the combined file, add vendor prefixes with autoprefixer and return its path
+	 *
+	 * @param string $strUrl An optional URL to prepend
+	 *
+	 * @return string The path to the combined file
+	 */
+	public function getCombinedFile($strUrl=null)
+	{
+
+		if (\Config::get('debugMode'))
+		{
+			return $this->getDebugMarkup();
+		}
+
+		return $this->getCombinedFileUrl($strUrl);
+	}
+
+
+	/**
+	 * Generates the debug markup.
+	 *
+	 * @return string The debug markup
+	 */
+	protected function getDebugMarkup()
+	{
+		$return = $this->getFileUrls();
+
+		if ($this->strMode == self::JS)
+		{
+			return implode('"></script><script src="', $return);
+		}
+		else
+		{
+			return implode('"><link rel="stylesheet" href="', $return);
+		}
+	}
+
+	
 	/**
 	 * Generate the combined file, add vendor prefixes and return its path
 	 *
@@ -233,5 +246,4 @@ class AutoCombiner extends Combiner
 
 		return $strUrl . 'assets/' . $strTarget . '/' . $strKey . $this->strMode;
 	}
-
 }
