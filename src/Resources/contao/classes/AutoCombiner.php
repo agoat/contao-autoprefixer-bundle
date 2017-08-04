@@ -63,8 +63,13 @@ class AutoCombiner extends Combiner
 	 *
 	 * @return array The file URLs
 	 */
-	public function getFileUrls()
+	public function getFileUrls($strUrl=null)
 	{
+		if ($strUrl === null)
+		{
+			$strUrl = TL_ASSETS_URL;
+		}
+		
 		$return = array();
 		$strTarget = substr($this->strMode, 1);
 
@@ -77,6 +82,13 @@ class AutoCombiner extends Combiner
 			{
 				$strPath = 'assets/' . $strTarget . '/' . str_replace('/', '_', $arrFile['name']) . $this->strMode;
 
+				// Load the existing file
+				if (file_exists(TL_ROOT . '/' . $strPath))
+				{
+					$return[] = $strUrl . $strPath;
+					continue;
+				}
+
 				$objFile = new \File($strPath);
 				if ($this->autoprefixer !== null)
 				{
@@ -88,7 +100,7 @@ class AutoCombiner extends Combiner
 				}
 				$objFile->close();
 
-				$return[] = $strPath;
+				$return[] = $strUrl . $strPath;
 			}
 			// Compile CSS files into temporary files
 			else if ($arrFile['extension'] == self::CSS)
@@ -106,7 +118,7 @@ class AutoCombiner extends Combiner
 				}
 				$objFile->close();
 
-				$return[] = $strPath;
+				$return[] = $strUrl . $strPath;
 			}
 			else
 			{
@@ -124,7 +136,7 @@ class AutoCombiner extends Combiner
 					$name .= '" media="' . $arrFile['media'];
 				}
 
-				$return[] = $name;
+				$return[] = $strUrl . $name;
 			}
 		}
 
