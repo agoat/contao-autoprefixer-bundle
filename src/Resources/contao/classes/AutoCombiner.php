@@ -77,16 +77,21 @@ class AutoCombiner extends Combiner
 			{
 				$strPath = 'assets/' . $strTarget . '/' . str_replace('/', '_', $arrFile['name']) . $this->strMode;
 
-				$objFile = new \File($strPath);
-				if ($this->autoprefixer !== null)
+				if (\Config::get('debugMode') || !file_exists(TL_ROOT . '/' . $strPath))
 				{
-					$objFile->write($this->autoprefixer->rewrite($this->handleScssLess($content, $arrFile)));
+					$objFile = new \File($strPath);
+
+					if ($this->autoprefixer)
+					{
+						$objFile->write($this->autoprefixer->rewrite($this->handleScssLess(file_get_contents(TL_ROOT . '/' . $arrFile['name']), $arrFile)));
+					}
+					else
+					{
+						$objFile->write($this->handleScssLess(file_get_contents(TL_ROOT . '/' . $arrFile['name']), $arrFile));
+					}
+					
+					$objFile->close();
 				}
-				else
-				{
-					$objFile->write($this->handleScssLess($content, $arrFile));
-				}
-				$objFile->close();
 
 				$return[] = $strPath;
 			}
@@ -95,33 +100,39 @@ class AutoCombiner extends Combiner
 			{
 				$strPath = 'assets/' . $strTarget . '/' . str_replace('/', '_', $arrFile['name']) . $this->strMode;
 
-				$objFile = new \File($strPath);
-				if ($this->autoprefixer !== null && strpos($arrFile['name'], 'assets/contao') === false) // exclude framework css
+				if (\Config::get('debugMode') || !file_exists(TL_ROOT . '/' . $strPath))
 				{
-					$objFile->write($this->autoprefixer->rewrite($this->handleCss($content, $arrFile)));
+					$objFile = new \File($strPath);
+					
+					if ($this->autoprefixer)
+					{
+						$objFile->write($this->autoprefixer->rewrite($this->handleCss(file_get_contents(TL_ROOT . '/' . $arrFile['name']), $arrFile)));
+					}
+					else
+					{
+						$objFile->write($this->handleCss(file_get_contents(TL_ROOT . '/' . $arrFile['name']), $arrFile));
+					}
+					
+					$objFile->close();
 				}
-				else
-				{
-					$objFile->write($this->handleCss($content, $arrFile));
-				}
-				$objFile->close();
 
 				$return[] = $strPath;
 			}
+
 			else
 			{
 				$name = $arrFile['name'];
 
 				// Strip the web/ prefix (see #328)
-				if (strncmp($name, 'web/', 4) === 0)
+				if (strncmp($name, $this->strWebDir . '/', strlen($this->strWebDir) + 1) === 0)
 				{
-					$name = substr($name, 4);
+					$name = substr($name, strlen($this->strWebDir) + 1);
 				}
 
 				// Add the media query (see #7070)
-				if ($arrFile['media'] != '' && $arrFile['media'] != 'all' && strpos($content, '@media') === false)
+				if ($arrFile['media'] != '' && $arrFile['media'] != 'all' && !$this->hasMediaTag($arrFile['name']))
 				{
-					$name .= '" media="' . $arrFile['media'];
+					$name .= '|' . $arrFile['media'];
 				}
 
 				$return[] = $name;
