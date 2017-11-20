@@ -34,9 +34,7 @@
             "src/Resources/contao/templates"
         ]
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Agoat\\AutoPrefixerBundle\\Test\\": "tests/"
-        }
+    "extra": {
+        "contao-manager-plugin": "Agoat\\AutoPrefixerBundle\\ContaoManager\\Plugin"
     }
 }
