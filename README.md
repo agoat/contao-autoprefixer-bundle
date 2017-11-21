@@ -56,7 +56,7 @@ Or visit the [Autoprefixer] project page for more informations.
 The autoprefixer tool used by this plugin is written in Javascript and called via node.
 Therefore, `Node.js` has to be installed on the server.
 
-Visit https://nodejs.org to see how to installing a Node.js isntance.
+Visit https://nodejs.org to see how to installing Node.js.
 
 ## Install
 ### Contao manager
