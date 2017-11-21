@@ -1,22 +1,18 @@
 <?php
 
-/**
- * Contao Open Source CMS
+/*
+ * Autoprefixer plugin for Contao Open Source CMS.
  *
- * Copyright (C) 2005-2016 Leo Feyer
- *
- * @package  	 AutoPrefixer
- * @author   	 Arne Stappen
- * @license  	 LGPL-3.0+ 
- * @copyright	 Arne Stappen 2016
+ * @copyright  Arne Stappen (alias aGoat) 2017
+ * @package    contao-autoprefixer
+ * @author     Arne Stappen <mehh@agoat.xyz>
+ * @link       https://agoat.xyz
+ * @license    LGPL-3.0
  */
- 
+
 
 /**
  * HOOKS
- *
  */
 $GLOBALS['TL_HOOKS']['replaceDynamicScriptTags'][] = array('Agoat\\AutoPrefixer\\Controller', 'generatePrefixedCSS'); 
- 
-
 

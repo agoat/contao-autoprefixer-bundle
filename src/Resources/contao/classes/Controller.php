@@ -1,14 +1,13 @@
 <?php
 
-/**
- * Contao Open Source CMS
+/*
+ * Autoprefixer plugin for Contao Open Source CMS.
  *
- * Copyright (C) 2005-2016 Leo Feyer
- *
- * @package  	 AutoPrefixer
- * @author   	 Arne Stappen
- * @license  	 LGPL-3.0+ 
- * @copyright	 Arne Stappen 2016
+ * @copyright  Arne Stappen (alias aGoat) 2017
+ * @package    contao-autoprefixer
+ * @author     Arne Stappen <mehh@agoat.xyz>
+ * @link       https://agoat.xyz
+ * @license    LGPL-3.0
  */
 
 namespace Agoat\AutoPrefixer;
@@ -17,9 +16,11 @@ use Contao\Template;
 use Agoat\AutoPrefixer\AutoCombiner;
 
 
+/**
+ * Controller class for autoprefixer
+ */
 class Controller extends \Contao\Controller
 {
-
 	/**
 	 * Replace the TL_CSS script tag and use the autoprefixer for vendor prefixes
 	 *
@@ -119,20 +120,16 @@ class Controller extends \Contao\Controller
 				}
 			}
 		}
-
 		
-		// save to a global
+		// Save to a global
 		$GLOBALS['TL_TEMPLATE_CSS'] = $strScripts;
 
-		// empty other CSS globals
+		// Empty other CSS globals
 		$GLOBALS['TL_FRAMEWORK_CSS'] = false;
 		$GLOBALS['TL_CSS'] = false;
 		$GLOBALS['TL_USER_CSS'] = false;
 		
 		return str_replace('[[TL_CSS]]', $GLOBALS['TL_TEMPLATE_CSS'], $strBuffer);
-
 	}
 
-
 }
-

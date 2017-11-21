@@ -1,14 +1,13 @@
 <?php
 
-/**
- * Contao Open Source CMS
+/*
+ * Autoprefixer plugin for Contao Open Source CMS.
  *
- * Copyright (C) 2005-2016 Leo Feyer
- *
- * @package  	 AutoPrefixer
- * @author   	 Arne Stappen
- * @license  	 LGPL-3.0+ 
- * @copyright	 Arne Stappen 2017
+ * @copyright  Arne Stappen (alias aGoat) 2017
+ * @package    contao-autoprefixer
+ * @author     Arne Stappen <mehh@agoat.xyz>
+ * @link       https://agoat.xyz
+ * @license    LGPL-3.0
  */
 
 namespace Agoat\AutoPrefixer;
@@ -25,20 +24,26 @@ use Agoat\AutoPrefixer\AutoPrefixer;
  *     $combiner = new AutoCombiner();
  *
  *     $combiner->add('css/style.css');
- *     $combiner->add('css/fonts.scss');
- *     $combiner->add('css/print.less');
+ *     $combiner->add('scss/layout.scss');
+ *     ...
  *
- *     echo $combiner->getCombinedFile();
+ *     $prefixedfile = $combiner->getCombinedFile();
+ *     $prefixedfiles = $combiner->getFileUrls();
  *
  */
 class AutoCombiner extends Combiner
 {
-
+    /**
+     * Autoprefixer
+     * @var null|class
+     */
 	protected $autoprefixer = null;
 	
 
 	/**
-	 * Public constructor required
+	 * Public constructor
+	 *
+	 * Prepares the autoprefixer class
 	 */
 	public function __construct()
 	{
@@ -47,7 +52,7 @@ class AutoCombiner extends Combiner
 		{
 			$objLayout = \LayoutModel::findByPk($GLOBALS['objPage']->layoutId);
 
-			// prepare browser list
+			// Prepare browser list
 			$browsers = explode(',', $objLayout->browsers);
 			array_walk($browsers, function (&$value) { $value = trim(html_entity_decode($value)); });
 
@@ -61,7 +66,7 @@ class AutoCombiner extends Combiner
 	/**
 	 * Generates the files, add vendor prefixes and returns the URLs.
 	 *
-	 * @return array The file URLs
+	 * @return array The file Urls
 	 */
 	public function getFileUrls()
 	{
@@ -95,6 +100,7 @@ class AutoCombiner extends Combiner
 
 				$return[] = $strPath;
 			}
+			
 			// Compile CSS files into temporary files
 			else if ($arrFile['extension'] == self::CSS)
 			{
@@ -142,46 +148,7 @@ class AutoCombiner extends Combiner
 		return $return;
 	}
 
-	
-	/**
-	 * Generate the combined file, add vendor prefixes with autoprefixer and return its path
-	 *
-	 * @param string $strUrl An optional URL to prepend
-	 *
-	 * @return string The path to the combined file
-	 */
-	public function getCombinedFile($strUrl=null)
-	{
 
-		if (\Config::get('debugMode'))
-		{
-			return $this->getDebugMarkup();
-		}
-
-		return $this->getCombinedFileUrl($strUrl);
-	}
-
-
-	/**
-	 * Generates the debug markup.
-	 *
-	 * @return string The debug markup
-	 */
-	protected function getDebugMarkup()
-	{
-		$return = $this->getFileUrls();
-
-		if ($this->strMode == self::JS)
-		{
-			return implode('"></script><script src="', $return);
-		}
-		else
-		{
-			return implode('"><link rel="stylesheet" href="', $return);
-		}
-	}
-
-	
 	/**
 	 * Generate the combined file, add vendor prefixes and return its path
 	 *

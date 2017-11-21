@@ -1,23 +1,22 @@
 <?php
-/**
- * Contao Open Source CMS
- *
- * Copyright (C) 2005-2016 Leo Feyer
- *
- * @package  	 AutoPrefixer
- * @author   	 Arne Stappen
- * @license  	 LGPL-3.0+ 
- * @copyright	 Arne Stappen 2016
- */
- 
- 
 
-// palettes
+/*
+ * Autoprefixer plugin for Contao Open Source CMS.
+ *
+ * @copyright  Arne Stappen (alias aGoat) 2017
+ * @package    contao-autoprefixer
+ * @author     Arne Stappen <mehh@agoat.xyz>
+ * @link       https://agoat.xyz
+ * @license    LGPL-3.0
+ */
+
+
+// Palettes
 $GLOBALS['TL_DCA']['tl_layout']['palettes']['default'] = str_replace('combineScripts', 'combineScripts,autoprefix', $GLOBALS['TL_DCA']['tl_layout']['palettes']['default']);
 $GLOBALS['TL_DCA']['tl_layout']['palettes']['__selector__'][] = 'autoprefix';
 $GLOBALS['TL_DCA']['tl_layout']['subpalettes']['autoprefix'] = 'browsers';
 
-// fields
+// Fields
 $GLOBALS['TL_DCA']['tl_layout']['fields']['autoprefix'] = array
 (
 	'label'                   => &$GLOBALS['TL_LANG']['tl_layout']['autoprefix'],
@@ -36,15 +35,22 @@ $GLOBALS['TL_DCA']['tl_layout']['fields']['browsers'] = array
 	'save_callback'   	  => array(array('tl_layout_autoprefixer', 'checkBrowserList')),
 	'sql'                     => "varchar(255) NOT NULL default ''"
 );
-
-
 	
 	
+/**
+ * Provide methods that are used by the data configuration array.
+ */
 class tl_layout_autoprefixer extends tl_layout
 {
+	/**
+	 * Set to the default value (last 2 versions) if value is empty
+	 *
+	 * @param string Browserslist query
+	 *
+	 * @return string Browserslist query
+	 */
 	public function checkBrowserList ($varValue)
 	{
-		// if nothing entered set to default value
 		return (empty($varValue)) ? 'last 2 versions' : $varValue;
 	}
 }

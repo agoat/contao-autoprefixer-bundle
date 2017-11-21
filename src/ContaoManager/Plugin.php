@@ -1,10 +1,13 @@
 <?php
+
 /*
- * This file is part of Contao.
+ * Autoprefixer plugin for Contao Open Source CMS.
  *
- * Copyright (c) 2005-2017 Leo Feyer
- *
- * @license LGPL-3.0+
+ * @copyright  Arne Stappen (alias aGoat) 2017
+ * @package    contao-autoprefixer
+ * @author     Arne Stappen <mehh@agoat.xyz>
+ * @link       https://agoat.xyz
+ * @license    LGPL-3.0
  */
 
 namespace Agoat\AutoPrefixerBundle\ContaoManager;
@@ -19,7 +22,7 @@ use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 /**
  * Plugin for the Contao Manager.
  *
- * @author Andreas Schempp <https://github.com/aschempp>
+ * @return BundleConfig
  */
 class Plugin implements BundlePluginInterface
 {

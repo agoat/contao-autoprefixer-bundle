@@ -1,7 +1,8 @@
 {
     "name": "agoat/contao-autoprefixer",
+    "description": "Contao 4 autoprefixer plugin",
+    "keywords": ["contao", "contao4", "contao-bundle", "plugin", "autoprefixer", "css", "caniuse"],
     "type": "contao-bundle",
-    "description": "Contao autoprefixer extension",
     "license": "LGPL-3.0+",
     "authors": [
         {
@@ -10,9 +11,9 @@
         }
     ],
     "require": {
-        "php": ">=5.6",
+        "php": "^5.6|^7.0",
         "symfony/framework-bundle": "^3.3",
-        "contao/core-bundle": "^4.4"
+        "contao/core-bundle": "^4.4.5"
     },
     "require-dev": {
         "phpunit/phpunit": "~4.5"
