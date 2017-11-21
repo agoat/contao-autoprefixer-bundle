@@ -5,7 +5,7 @@
 [![Downloads](https://img.shields.io/packagist/dt/agoat/contao-autoprefixer.svg?style=flat-square)](http://packagist.org/packages/agoat/contao-autoprefixer)
 
 ## About
-Forget about vendor prefixes. Just write pure (S)CSS. This plugin adds vendor prefixes to CSS rules using values from [Can I Use].
+Forget about vendor prefixes. Just write pure (S)CSS. This plugin adds vendor prefixes (depending on your settings) to CSS rules using values from [Can I Use].
 
 Write your CSS rules without vendor prefixes:
 ```css
