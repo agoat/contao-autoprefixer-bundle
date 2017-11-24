@@ -10,16 +10,16 @@
  * @license    LGPL-3.0
  */
 
-namespace Agoat\AutoPrefixer;
+namespace Agoat\AutoPrefixerBundle\Contao;
 
+use Contao\Controller as ContaoController;
 use Contao\Template;
-use Agoat\AutoPrefixer\AutoCombiner;
 
 
 /**
  * Controller class for autoprefixer
  */
-class Controller extends \Contao\Controller
+class Controller extends ContaoController
 {
 	/**
 	 * Replace the TL_CSS script tag and use the autoprefixer for vendor prefixes

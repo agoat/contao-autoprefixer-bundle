@@ -10,10 +10,9 @@
  * @license    LGPL-3.0
  */
 
-namespace Agoat\AutoPrefixer;
+namespace Agoat\AutoPrefixerBundle\Contao;
 
 use Contao\Combiner;
-use Agoat\AutoPrefixer\AutoPrefixer;
 
 
 /**

@@ -14,5 +14,5 @@
 /**
  * HOOKS
  */
-$GLOBALS['TL_HOOKS']['replaceDynamicScriptTags'][] = array('Agoat\\AutoPrefixer\\Controller', 'generatePrefixedCSS'); 
+$GLOBALS['TL_HOOKS']['replaceDynamicScriptTags'][] = array('Agoat\\AutoPrefixerBundle\\Contao\\Controller', 'generatePrefixedCSS'); 
 
