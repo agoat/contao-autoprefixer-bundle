@@ -4,6 +4,8 @@
 [![License](https://img.shields.io/packagist/l/agoat/contao-autoprefixer.svg?style=flat-square)](http://packagist.org/packages/agoat/contao-autoprefixer)
 [![Downloads](https://img.shields.io/packagist/dt/agoat/contao-autoprefixer.svg?style=flat-square)](http://packagist.org/packages/agoat/contao-autoprefixer)
 
+#### Now compatible with Contao 4.6 !!
+
 ## About
 Forget about vendor prefixes. Just write pure (S)CSS. This plugin adds vendor prefixes (depending on your settings) to CSS rules using values from [Can I Use].
 
