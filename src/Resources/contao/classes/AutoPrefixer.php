@@ -20,22 +20,30 @@ namespace Agoat\AutoPrefixerBundle\Contao;
  */
 class AutoPrefixer
 {
-    /**
-     * Browserslist queries
-     * @var array
-     */
     private $browsers = array();
+    private $flex;
+    private $grid;
+    private $remove;
+    private $supports;
 
-	
-	/**
-	 * Prepare the Browserslist queries array
-	 *
-	 * @param array Browserslist queries
-	 */
-    public function __construct($browsers = array('last 2 version'))
+
+    /**
+     * Prepare the options
+     *
+     * @param array $browsers
+     * @param bool $flex
+     * @param bool $grid
+     * @param bool $remove
+     * @param bool $supports
+     */
+    public function __construct(array $browsers, bool $flex, bool $grid, bool $remove, bool $supports)
     {
         $this->browsers = $browsers;
-	}
+        $this->flex = $flex;
+        $this->grid = $grid;
+        $this->remove = $remove;
+        $this->supports = $supports;
+    }
 
 	
 	/**
@@ -49,26 +57,26 @@ class AutoPrefixer
 	 */
     public function rewrite($css)
     {
-        // Open wrapper to autoprefixer.js in node.js
-        $nodejs = proc_open
-        (
+        // Open autoprefix controller in node.js
+        $nodejs = proc_open(
             'node ' . \System::getContainer()->getParameter('kernel.project_dir') . '/vendor/agoat/contao-autoprefixer/src/Resources/autoprefixer/controller.js',
             array(array('pipe', 'r'), array('pipe', 'w')),
             $pipes
         );
 
-        if ($nodejs === false) 
-        {
+        if ($nodejs === false) {
             throw new \RuntimeException('Could not start node runtime');
         }
 
-        $stdin = array
-        (
+        $stdin = array(
             'css' => $css,
             'browsers' => $this->browsers,
-            'env' => 'production'
+            'flex' => $this->flex,
+            'grid' => $this->grid,
+            'remove' => $this->remove,
+            'supports' => $this->supports
         );
-        
+
         $stdin = json_encode($stdin);
         
         // Send to node.js
@@ -79,9 +87,9 @@ class AutoPrefixer
         $stdout = stream_get_contents($pipes[1]);
         fclose($pipes[1]);
        
-        // Close wrapper in node.js
+        // Close controller in node.js
         proc_close($nodejs);
-                     
+
         return json_decode($stdout, true);
     }
 };

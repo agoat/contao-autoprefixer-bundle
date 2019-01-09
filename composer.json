@@ -12,6 +12,7 @@
     ],
     "require": {
         "php": "^7.0",
+        "ext-json": "*",
         "symfony/framework-bundle": "3.4.* || 4.1.* || 4.2.*",
         "contao/core-bundle": "^4.4"
     },

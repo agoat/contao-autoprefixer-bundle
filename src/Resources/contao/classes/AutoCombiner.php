@@ -53,9 +53,21 @@ class AutoCombiner extends Combiner
 
 			// Prepare browser list
 			$browsers = explode(',', $objLayout->browsers);
-			array_walk($browsers, function (&$value) { $value = trim(html_entity_decode($value)); });
+			array_walk($browsers, function (&$value) {
+			    $value = trim(html_entity_decode($value));
+			});
 
-			$this->autoprefixer = new AutoPrefixer($browsers);
+            // Prepare flex/grid options
+            $flex = $objLayout->flex == 'true' || $objLayout->flex == 'false' ?
+                (bool) $objLayout->flex : $flex = $objLayout->flex;
+
+            $grid = $objLayout->grid == 'false' ? $grid = false : $grid = $objLayout->grid;
+
+            // Prepare other options
+            $remove = (bool) $objLayout->remove;
+            $supports = (bool) $objLayout->supports;
+
+			$this->autoprefixer = new AutoPrefixer($browsers, $flex, $grid, $remove, $supports);
 		}
 		
 		parent::__construct();

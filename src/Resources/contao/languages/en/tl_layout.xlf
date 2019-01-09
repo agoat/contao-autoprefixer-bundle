@@ -6,13 +6,55 @@
         <source>Autoprefixer</source>
       </trans-unit>
       <trans-unit id="tl_layout.autoprefix.1">
-        <source>Add vendor prefixes to all combined stylesheets.</source>
+        <source>Add vendor prefixes in all (combined) stylesheets.</source>
       </trans-unit>
       <trans-unit id="tl_layout.browsers.0">
         <source>Browser query</source>
       </trans-unit>
       <trans-unit id="tl_layout.browsers.1">
         <source>Enter a comma separated list of vendor or browser queries (e.g. last 2 versions, > 5%).</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.flex.0">
+        <source>Flexbox</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.flex.1">
+        <source>Select if prefixes for flexbox properties should be added.</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.flexOptions.true">
+        <source>Add prefixes for flexbox properties</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.flexOptions.no-2009">
+        <source>Add prefixes only for final and IE versions of specification</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.flexOptions.false">
+        <source>Do not add prefixes for flexbox properties</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.grid.0">
+        <source>Grid</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.grid.1">
+        <source>Select if IE prefixes for Grid Layout properties should be added.</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.gridOptions.false">
+        <source>Do not add IE prefixes for CSS Grid translations</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.gridOptions.autoplace">
+        <source>Add grid translations and include autoplacement support</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.gridOptions.no-autoplace">
+        <source>Add grid translations but exclude autoplacement support</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.remove.0">
+        <source>Remove outdated prefixes</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.remove.1">
+        <source>Select to removes outdated prefixes.</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.supports.0">
+        <source>Add prefixed for '@support' parameters</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.supports.1">
+        <source>Select to add prefixes for @supports parameters.</source>
       </trans-unit>
     </body>
   </file>
