@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.1">
+  <file datatype="php" original="src/Resources/contao/languages/de/tl_layout.php" source-language="de">
+    <body>
+      <trans-unit id="tl_layout.autoprefix.0">
+        <source>Autoprefixer</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.autoprefix.1">
+        <source>Füge vendor prefixes in Stylesheets hinzu.</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.browsers.0">
+        <source>Browserauswahl</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.browsers.1">
+        <source>Geben Sie eine kommagetrennte Liste an Browserabfragen ein (z. B. last 2 Versions, > 5%). Mehr Informationen unter https://github.com/browserslist/browserslist#queries</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.flex.0">
+        <source>Flexbox</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.flex.1">
+        <source>Auswählen wenn Präfixe für Flexbox-Eigenschaften hinzugefügt werden sollen.</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.flexOptions.true">
+        <source>Präfixe für Flexbox-Eigenschaften hinzufügen</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.flexOptions.no-2009">
+        <source>Präfixe nur für finale und IE-Versionen der Spezifikation hinzufügen</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.flexOptions.false">
+        <source>Keine Präfixe für Flexbox-Eigenschaften hinzufügen</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.grid.0">
+        <source>Grid</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.grid.1">
+        <source>Auswählen wenn IE-Präfixe für Grid-Layout-Eigenschaften hinzugefügt werden sollen.</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.gridOptions.false">
+        <source>Keine IE-Präfixe für CSS-Grid-Übersetzungen hinzufügen</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.gridOptions.autoplace">
+        <source>Hinzufügen von Grid-Eigenschaften und Unterstützung von Autoplacement</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.gridOptions.no-autoplace">
+        <source>Grid-Eigenschaften hinzufügen, aber Unterstützung für Autoplacement ausschließen</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.remove.0">
+        <source>Veraltete Präfixe entfernen</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.remove.1">
+        <source>Wählen Sie diese Option, um veraltete Präfixe zu entfernen.</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.supports.0">
+        <source>Präfixe für '@support'-Parameter hinzufügen</source>
+      </trans-unit>
+      <trans-unit id="tl_layout.supports.1">
+        <source>Wählen Sie diese Option, um Präfixe für @supports-Parameter hinzuzufügen.</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
