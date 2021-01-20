@@ -3,7 +3,7 @@
 /*
  * Autoprefixer plugin for Contao Open Source CMS.
  *
- * @copyright  Arne Stappen (alias aGoat) 2017
+ * @copyright  Arne Stappen (alias aGoat) 2021
  * @package    contao-autoprefixer
  * @author     Arne Stappen <mehh@agoat.xyz>
  * @link       https://agoat.xyz
@@ -80,7 +80,10 @@ class AutoCombiner extends Combiner
         $strTarget = substr($this->strMode, 1);
 
         foreach ($this->arrFiles as &$file) {
-            $strPath = 'assets/' . $strTarget . '/' . str_replace('/', '_', $file['name']) . '.prefixed' . $this->strMode;
+            $strPath = 'assets/' . $strTarget . '/' . str_replace('/',
+                    '_',
+                    $file['name']
+                ) . '.prefixed' . $this->strMode;
 
             if (Config::get('debugMode') || !file_exists($this->strRootDir . '/' . $strPath)) {
                 $newFile = new File($strPath);

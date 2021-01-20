@@ -3,7 +3,7 @@
 /*
  * Autoprefixer plugin for Contao Open Source CMS.
  *
- * @copyright  Arne Stappen (alias aGoat) 2017
+ * @copyright  Arne Stappen (alias aGoat) 2021
  * @package    contao-autoprefixer
  * @author     Arne Stappen <mehh@agoat.xyz>
  * @link       https://agoat.xyz

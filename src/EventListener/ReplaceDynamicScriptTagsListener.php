@@ -1,10 +1,18 @@
 <?php
 
+/*
+ * Autoprefixer plugin for Contao Open Source CMS.
+ *
+ * @copyright  Arne Stappen (alias aGoat) 2021
+ * @package    contao-autoprefixer
+ * @author     Arne Stappen <mehh@agoat.xyz>
+ * @link       https://agoat.xyz
+ * @license    LGPL-3.0
+ */
+
 namespace Agoat\AutoPrefixerBundle\EventListener;
 
-
 use Agoat\AutoPrefixerBundle\Contao\AutoCombiner;
-use Contao\Config;
 use Contao\Controller;
 use Contao\CoreBundle\ServiceAnnotation\Hook;
 use Contao\LayoutModel;
@@ -16,6 +24,7 @@ use Contao\Template;
  */
 class ReplaceDynamicScriptTagsListener
 {
+
     public function __invoke(string $buffer): string
     {
         // PageModel needed
@@ -49,7 +58,11 @@ class ReplaceDynamicScriptTagsListener
                 if ($options->static) {
                     $combiner->add($stylesheet, $options->mtime, $options->media);
                 } else {
-                    $stylesheetTags .= Template::generateStyleTag(Controller::addAssetsUrlTo($stylesheet), $options->media, $options->mtime);
+                    $stylesheetTags .= Template::generateStyleTag(
+                        Controller::addAssetsUrlTo($stylesheet),
+                        $options->media,
+                        $options->mtime
+                    );
                 }
             }
         }
@@ -62,7 +75,11 @@ class ReplaceDynamicScriptTagsListener
                 if ($options->static) {
                     $combiner->add($stylesheet, $options->mtime, $options->media);
                 } else {
-                    $stylesheetTags .= Template::generateStyleTag(Controller::addAssetsUrlTo($stylesheet), $options->media, $options->mtime);
+                    $stylesheetTags .= Template::generateStyleTag(
+                        Controller::addAssetsUrlTo($stylesheet),
+                        $options->media,
+                        $options->mtime
+                    );
                 }
             }
         }
@@ -89,4 +106,5 @@ class ReplaceDynamicScriptTagsListener
 
         return str_replace('[[TL_CSS]]', $stylesheetTags, $buffer);
     }
+
 }

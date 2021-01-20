@@ -3,7 +3,7 @@
 /*
  * Autoprefixer plugin for Contao Open Source CMS.
  *
- * @copyright  Arne Stappen (alias aGoat) 2017
+ * @copyright  Arne Stappen (alias aGoat) 2021
  * @package    contao-autoprefixer
  * @author     Arne Stappen <mehh@agoat.xyz>
  * @link       https://agoat.xyz
@@ -26,15 +26,17 @@ use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
  */
 class Plugin implements BundlePluginInterface
 {
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getBundles(ParserInterface $parser)
-	{
-		return [
-			BundleConfig::create(AgoatAutoPrefixerBundle::class)
-				->setLoadAfter([ContaoCoreBundle::class])
-				->setReplace(['autoprefixer']),
-		];
-	}
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getBundles(ParserInterface $parser)
+    {
+        return [
+            BundleConfig::create(AgoatAutoPrefixerBundle::class)
+                        ->setLoadAfter([ContaoCoreBundle::class])
+                        ->setReplace(['autoprefixer']),
+        ];
+    }
+
 }

@@ -3,7 +3,7 @@
 /*
  * Autoprefixer plugin for Contao Open Source CMS.
  *
- * @copyright  Arne Stappen (alias aGoat) 2017
+ * @copyright  Arne Stappen (alias aGoat) 2021
  * @package    contao-autoprefixer
  * @author     Arne Stappen <mehh@agoat.xyz>
  * @link       https://agoat.xyz
@@ -23,18 +23,18 @@ use Symfony\Component\Config\FileLocator;
  */
 class AgoatAutoPrefixerExtension extends Extension
 {
+
     /**
      * {@inheritdoc}
      */
     public function load(array $config, ContainerBuilder $container)
     {
-        $loader = new YamlFileLoader(
-            $container,
-            new FileLocator(__DIR__.'/../Resources/config')
+        $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config')
         );
 
         $loader->load('services.yml');
 
         $container->setParameter('contao.localconfig', ['useAutoItem' => false]);
-	}
+    }
+
 }

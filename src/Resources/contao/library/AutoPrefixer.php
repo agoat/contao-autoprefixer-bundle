@@ -3,7 +3,7 @@
 /*
  * Autoprefixer plugin for Contao Open Source CMS.
  *
- * @copyright  Arne Stappen (alias aGoat) 2017
+ * @copyright  Arne Stappen (alias aGoat) 2021
  * @package    contao-autoprefixer
  * @author     Arne Stappen <mehh@agoat.xyz>
  * @link       https://agoat.xyz
@@ -13,7 +13,6 @@
 namespace Agoat\AutoPrefixerBundle\Contao;
 
 
-
 /**
  * Handles the node.js task
  *
@@ -21,7 +20,8 @@ namespace Agoat\AutoPrefixerBundle\Contao;
  */
 class AutoPrefixer
 {
-    private $browsers = array();
+
+    private $browsers = [];
     private $flex;
     private $grid;
     private $remove;
@@ -31,11 +31,11 @@ class AutoPrefixer
     /**
      * Prepare the options
      *
-     * @param array $browsers
-     * @param bool $flex
-     * @param bool $grid
-     * @param bool $remove
-     * @param bool $supports
+     * @param  array  $browsers
+     * @param  bool  $flex
+     * @param  bool  $grid
+     * @param  bool  $remove
+     * @param  bool  $supports
      */
     public function __construct(array $browsers, bool $flex, bool $grid, bool $remove, bool $supports)
     {
@@ -49,7 +49,7 @@ class AutoPrefixer
     /**
      * Rewrite the css with the autoprefixer.js in node.js
      *
-     * @param string CSS
+     * @param  string CSS
      *
      * @return string Prefixed CSS
      *
@@ -58,9 +58,9 @@ class AutoPrefixer
     public function rewrite($css)
     {
         // Open autoprefix controller in node.js
-        $nodejs = proc_open(
-            'node ' . \System::getContainer()->getParameter('kernel.project_dir') . '/vendor/agoat/contao-autoprefixer/src/Resources/autoprefixer/controller.js',
-            array(array('pipe', 'r'), array('pipe', 'w')),
+        $nodejs = proc_open('node ' . \System::getContainer()->getParameter('kernel.project_dir'
+            ) . '/vendor/agoat/contao-autoprefixer/src/Resources/autoprefixer/controller.js',
+            [['pipe', 'r'], ['pipe', 'w']],
             $pipes
         );
 
@@ -68,14 +68,9 @@ class AutoPrefixer
             throw new \RuntimeException('Could not start node runtime');
         }
 
-        $stdin = array(
-            'css' => $css,
-            'browsers' => $this->browsers,
-            'flex' => $this->flex,
-            'grid' => $this->grid,
-            'remove' => $this->remove,
-            'supports' => $this->supports
-        );
+        $stdin = [
+            'css' => $css, 'browsers' => $this->browsers, 'flex' => $this->flex, 'grid' => $this->grid, 'remove' => $this->remove, 'supports' => $this->supports,
+        ];
 
         $stdin = json_encode($stdin);
 
@@ -92,4 +87,5 @@ class AutoPrefixer
 
         return json_decode($stdout, true);
     }
-};
+
+}
