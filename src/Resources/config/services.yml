@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+#        bind:
+#            Contao\CoreBundle\Framework\ContaoFramework: "@contao.framework"
+
+    Agoat\AutoPrefixerBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection,Resources,ContaoManager}'
+

@@ -13,6 +13,7 @@
 namespace Agoat\AutoPrefixerBundle\Contao;
 
 
+
 /**
  * Handles the node.js task
  *
@@ -45,16 +46,15 @@ class AutoPrefixer
         $this->supports = $supports;
     }
 
-	
-	/**
-	 * Rewrite the css with the autoprefixer.js in node.js
-	 *
-	 * @param string CSS
-	 *
-	 * @return string Prefixed CSS
-	 *
-	 * @throws \RuntimeException If node.js could not be startet
-	 */
+    /**
+     * Rewrite the css with the autoprefixer.js in node.js
+     *
+     * @param string CSS
+     *
+     * @return string Prefixed CSS
+     *
+     * @throws \RuntimeException If node.js could not be startet
+     */
     public function rewrite($css)
     {
         // Open autoprefix controller in node.js
@@ -78,7 +78,7 @@ class AutoPrefixer
         );
 
         $stdin = json_encode($stdin);
-        
+
         // Send to node.js
         fwrite($pipes[0], $stdin);
         fclose($pipes[0]);
@@ -86,7 +86,7 @@ class AutoPrefixer
         // Get from node.js
         $stdout = stream_get_contents($pipes[1]);
         fclose($pipes[1]);
-       
+
         // Close controller in node.js
         proc_close($nodejs);
 
